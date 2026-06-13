@@ -1,29 +1,23 @@
 class LoginPage {
-  usernameInput = 'input[name="username"]';
-  passwordInput = 'input[name="password"]';
-  loginButton = 'button[type="submit"]';
-
   visit() {
     cy.visit("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
   }
 
-  inputUsername(username) {
-    cy.get(this.usernameInput).type(username);
+  username(username) {
+    cy.get('input[name="username"]').clear().type(username);
   }
 
-  inputPassword(password) {
-    cy.get(this.passwordInput).type(password);
+  password(password) {
+    cy.get('input[name="password"]').clear().type(password);
   }
 
-  clickLogin() {
-    cy.get(this.loginButton).click();
+  loginBtn() {
+    cy.get('button[type="submit"]').click();
   }
 
-  login(username, password) {
-    this.inputUsername(username);
-    this.inputPassword(password);
-    this.clickLogin();
+  forgotPassword() {
+    cy.contains("Forgot your password?").click();
   }
 }
 
-export default LoginPage;
+export default new LoginPage();
